@@ -1,6 +1,7 @@
 // API utilities for Supply Chain Intelligence Dashboard
 
 import { Report, TaskStatus, ResearchRequest } from './types';
+import { getAuthToken } from './auth-context';
 
 // Use the backend URL directly
 const API_BASE_URL = typeof window !== 'undefined'
@@ -17,13 +18,21 @@ export class ApiError extends Error {
 async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
   
+  // Get auth token and add to headers
+  const token = getAuthToken();
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    ...options?.headers,
+  };
+  
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+  
   try {
     const response = await fetch(url, {
       ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
+      headers,
     });
 
     if (!response.ok) {

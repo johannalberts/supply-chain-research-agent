@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth-context';
 import { api } from '@/lib/api';
 import { TaskStatus, Report } from '@/lib/types';
 import ReportsList from '@/components/ReportsList';
@@ -8,6 +10,8 @@ import ReportDetail from '@/components/ReportDetail';
 import NewResearchModal from '@/components/NewResearchModal';
 
 export default function Dashboard() {
+  const router = useRouter();
+  const { user, isLoading: authLoading, logout } = useAuth();
   const [tasks, setTasks] = useState<TaskStatus[]>([]);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [selectedReport, setSelectedReport] = useState<Report | null>(null);
@@ -16,6 +20,13 @@ export default function Dashboard() {
   const [error, setError] = useState<string | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('COMPLETED');
   const [showNewResearchModal, setShowNewResearchModal] = useState(false);
+
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/auth');
+    }
+  }, [user, authLoading, router]);
 
   // Fetch tasks list
   const fetchTasks = async () => {
@@ -98,12 +109,28 @@ export default function Dashboard() {
                 Real-time risk analysis and monitoring
               </p>
             </div>
-            <button
-              onClick={handleNewResearch}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-sm"
-            >
-              + New Research
-            </button>
+            <div className="flex items-center gap-4">
+              {user && (
+                <span className="text-sm text-slate-600 dark:text-slate-400">
+                  Welcome, {user.username}
+                </span>
+              )}
+              <button
+                onClick={handleNewResearch}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-sm"
+              >
+                + New Research
+              </button>
+              <button
+                onClick={() => {
+                  logout();
+                  router.push('/auth');
+                }}
+                className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-900 dark:text-white rounded-lg font-medium transition-colors"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
