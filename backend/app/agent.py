@@ -4,13 +4,14 @@ from pydantic import BaseModel, Field
 from langgraph.graph import StateGraph, START, END
 from langchain_google_genai import ChatGoogleGenerativeAI
 from tavily import TavilyClient
+from django.conf import settings
 import os
 
-tavily = TavilyClient(api_key=os.environ.get("TAVILY_API_KEY"))
+tavily = TavilyClient(api_key=settings.TAVILY_API_KEY)
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     temperature=0,
-    google_api_key=os.environ.get("GOOGLE_API_KEY")
+    google_api_key=settings.GOOGLE_API_KEY
 )
 
 

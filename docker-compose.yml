@@ -3,18 +3,53 @@ services:
   backend:
     build: ./backend
     command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
     volumes:
       - ./backend:/app
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - TAVILY_API_KEY=${TAVILY_API_KEY}
       - DATABASE_URL=${DATABASE_URL}
-    tty: true
-    stdin_open: true
+      - REDIS_URL=redis://redis:6379/0
+      - ALLOWED_HOSTS=localhost,backend
     depends_on:
       - db
+      - redis
+    ports:
+      - "8000:8000"
+
+  # Celery Worker
+  celery-worker:
+    build: ./backend
+    command: sh -c "celery -A backend worker --loglevel=info"
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  # Celery Beat Scheduler
+  celery-beat:
+    build: ./backend
+    command: sh -c "celery -A backend beat --loglevel=info"
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
 
   frontend:
     build: ./frontend
@@ -22,8 +57,18 @@ services:
       - "3000:3000"
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - API_URL=http://backend:8000
     depends_on:
       - backend
+
+  # Redis Broker for Celery
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
 
   db:
     image: postgres:15
@@ -33,6 +78,9 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
+  redis_data:

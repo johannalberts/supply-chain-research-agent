@@ -1,6 +1,22 @@
 django-ninja==1.5.1
-Django==6.0
+Django==5.2.9
+django-cors-headers==4.6.0
 pymongo==4.15.4
 tavily==1.1.0
 psycopg2-binary
 dj-database-url
+python-dotenv==1.1.0
+
+# AI and LangChain dependencies
+langgraph==0.2.58
+langchain-google-genai==2.0.8
+langchain-core==0.3.29
+pydantic==2.10.5
+
+# Celery and Redis for async task processing
+celery[redis]==5.4.0
+redis==5.2.0
+kombu==5.4.2
+vine==5.1.0
+django-celery-beat==2.8.1
+django-celery-results==2.5.1

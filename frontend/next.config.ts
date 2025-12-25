@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // No rewrites needed - frontend will call backend directly
 };
 
 export default nextConfig;
