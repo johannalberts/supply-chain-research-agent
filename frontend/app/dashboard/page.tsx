@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { api } from '@/lib/api';
 import { TaskStatus, Report } from '@/lib/types';
-import ReportsList from '@/components/ReportsList';
+import ReportsSidebar from '@/components/ReportsSidebar';
 import ReportDetail from '@/components/ReportDetail';
 import NewResearchModal from '@/components/NewResearchModal';
 
@@ -135,65 +135,65 @@ export default function Dashboard() {
         </div>
       </header>
 
+      {/* Collapsible Sidebar */}
+      <ReportsSidebar
+        tasks={tasks}
+        selectedTaskId={selectedTaskId}
+        onSelectTask={handleTaskSelect}
+        filterStatus={filterStatus}
+        onFilterChange={setFilterStatus}
+      />
+
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {error && (
-          <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400">
-            {error}
-          </div>
-        )}
+      <main className="pt-8 px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="max-w-7xl mx-auto">
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400">
+              {error}
+            </div>
+          )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Reports List */}
-          <div className="lg:col-span-1">
-            <ReportsList
-              tasks={tasks}
-              loading={loading}
-              selectedTaskId={selectedTaskId}
-              onTaskSelect={handleTaskSelect}
-              filterStatus={filterStatus}
-              onFilterChange={setFilterStatus}
-              onRefresh={fetchTasks}
-            />
-          </div>
-
-          {/* Report Detail */}
-          <div className="lg:col-span-2">
-            {loadingReport ? (
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 flex items-center justify-center min-h-[500px]">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                  <p className="mt-4 text-slate-600 dark:text-slate-400">Loading report...</p>
-                </div>
+          {/* Report Detail - Full Width */}
+          {loadingReport ? (
+            <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 p-12 flex items-center justify-center min-h-[600px]">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto"></div>
+                <p className="mt-6 text-lg text-slate-600 dark:text-slate-400">Loading report...</p>
               </div>
-            ) : selectedReport ? (
-              <ReportDetail report={selectedReport} />
-            ) : (
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 flex items-center justify-center min-h-[500px]">
-                <div className="text-center">
-                  <svg
-                    className="mx-auto h-12 w-12 text-slate-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+            </div>
+          ) : selectedReport ? (
+            <ReportDetail report={selectedReport} />
+          ) : (
+            <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 p-12 flex items-center justify-center min-h-[600px]">
+              <div className="text-center max-w-md">
+                <div className="mx-auto h-24 w-24 text-slate-300 dark:text-slate-700 mb-6">
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      strokeWidth={1.5}
+                      d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  <h3 className="mt-2 text-sm font-medium text-slate-900 dark:text-white">
-                    No report selected
-                  </h3>
-                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Select a completed research task to view its report
-                  </p>
                 </div>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                  No Report Selected
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  Select a completed research task from the sidebar to view its detailed risk analysis
+                </p>
+                <button
+                  onClick={handleNewResearch}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-lg"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Start New Research
+                </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </main>
 
