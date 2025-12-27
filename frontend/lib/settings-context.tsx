@@ -20,13 +20,19 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       return;
     }
     try {
-      const saved = window.localStorage.getItem('backgroundPattern') as BackgroundPattern;
-      if (saved) {
-        setBackgroundPattern(saved);
+      const saved = window.localStorage.getItem('backgroundPattern');
+      if (saved && isValidPattern(saved)) {
+        setBackgroundPattern(saved as BackgroundPattern);
       }
     } catch (error) {
+      console.error('🎨 Settings context: Error accessing localStorage while loading pattern', error);
     }
   }, []);
+
+  // Validate that a string is a valid BackgroundPattern
+  const isValidPattern = (value: string): value is BackgroundPattern => {
+    return ['none', 'grid', 'hexagon', 'circuit', 'dots'].includes(value);
+  };
   // Save to localStorage when changed
   const handleSetPattern = (pattern: BackgroundPattern) => {
     setBackgroundPattern(pattern);
