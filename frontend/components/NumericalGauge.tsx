@@ -35,7 +35,12 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
   const pulseSpeed = value >= 7 ? '1s' : value >= 4 ? '1.5s' : '2s';
 
   return (
-    <div className="flex flex-col items-center gap-3" style={{ position: 'relative', zIndex: 0 }}>
+    <div 
+      className="flex flex-col items-center gap-3" 
+      style={{ position: 'relative', zIndex: 0 }}
+      role="region"
+      aria-label={`${label}: ${getStatusText()} risk level, score ${value.toFixed(1)} out of 10`}
+    >
       <style jsx>{`
         @keyframes pulse-segment {
           0%, 100% { opacity: 1; }
@@ -70,6 +75,7 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
             fontWeight: 900,
             textShadow: `0 0 10px ${getColor()}, 0 0 20px ${getColor()}`,
           }}
+          aria-hidden="true"
         >
           {value.toFixed(1)}
         </div>
@@ -81,6 +87,11 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
             width: '100%',
             height: '40px',
           }}
+          role="progressbar"
+          aria-valuenow={value}
+          aria-valuemin={0}
+          aria-valuemax={10}
+          aria-label={`Risk level: ${getStatusText()}, ${filledSegments} out of ${segments} segments filled`}
         >
           {Array.from({ length: segments }).map((_, index) => {
             const isFilled = index < filledSegments;
