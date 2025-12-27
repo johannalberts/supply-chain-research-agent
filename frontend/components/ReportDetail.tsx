@@ -1,7 +1,7 @@
 "use client";
 
 import { Report } from '@/lib/types';
-import RadialGauge from './RadialGauge';
+import NumericalGauge from './NumericalGauge';
 
 interface ReportDetailProps {
   report: Report;
@@ -59,7 +59,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
         
         {/* Main Fragility Gauge */}
         <div className="flex justify-center py-6">
-          <RadialGauge 
+          <NumericalGauge 
             value={report.fragility_score} 
             label="OVERALL FRAGILITY"
             size={220}
@@ -136,7 +136,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
                 }}
               >
                 <div className="flex flex-col items-center">
-                  <RadialGauge 
+                  <NumericalGauge 
                     value={metric.impact_score} 
                     label={metric.category.toUpperCase()}
                     size={160}

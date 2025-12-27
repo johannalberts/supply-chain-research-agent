@@ -1,23 +1,23 @@
 "use client";
 
-interface RadialGaugeProps {
+interface NumericalGaugeProps {
   value: number; // 0-100
   label: string;
   size?: number;
 }
 
-export default function RadialGauge({ value, label, size = 180 }: RadialGaugeProps) {
+export default function NumericalGauge({ value, label, size = 180 }: NumericalGaugeProps) {
   // Determine color based on value (higher = worse = red)
   const getColor = () => {
-    if (value >= 70) return '#ef4444'; // Critical Red
-    if (value >= 40) return '#f59e0b'; // Warning Amber
-    return '#14b8a6'; // Success Teal
+    if (value >= 7) return '#ef4444'; // Critical Red (70%+)
+    if (value >= 4) return '#f59e0b'; // Warning Amber (40-70%)
+    return '#14b8a6'; // Success Teal (<40%)
   };
   
   const getStatusText = () => {
-    if (value >= 70) return 'CRITICAL';
-    if (value >= 40) return 'CAUTION';
-    return 'NOMINAL';
+    if (value >= 7) return 'HIGH';
+    if (value >= 4) return 'MEDIUM';
+    return 'LOW';
   };
 
   return (
@@ -54,13 +54,14 @@ export default function RadialGauge({ value, label, size = 180 }: RadialGaugePro
         {/* Center value display */}
         <div className="flex flex-col items-center justify-center" style={{ position: 'relative', zIndex: 1 }}>
           <div 
-            className="text-6xl font-bold sci-text glow-effect transition-all duration-500"
+            className="text-6xl font-bold sci-text transition-all duration-500"
             style={{ 
               color: getColor(),
               fontFamily: 'Orbitron, monospace',
               fontWeight: 900,
               position: 'relative',
               zIndex: 1,
+              textShadow: `0 0 10px ${getColor()}, 0 0 20px ${getColor()}`,
             }}
           >
             {value}
