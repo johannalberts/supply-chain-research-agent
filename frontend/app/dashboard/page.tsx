@@ -97,32 +97,32 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen relative" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-screen relative" style={{ background: 'var(--bg-dark)' }}>
       {/* LCARS Header */}
       <header 
         className="sticky top-0 z-10 relative"
         style={{
-          background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-          borderBottom: '4px solid #14b8a6',
+          background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+          borderBottom: '4px solid var(--border-teal)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Top decorative bars */}
           <div className="flex gap-2 mb-6">
-            <div className="h-16 w-32 rounded-full flex items-center justify-center" style={{ background: '#14b8a6' }}>
+            <div className="h-16 w-32 rounded-full flex items-center justify-center" style={{ background: 'var(--primary-teal)' }}>
               <span className="font-bold text-black text-sm">MAIN</span>
             </div>
-            <div className="h-16 flex-1 rounded-full" style={{ background: '#a855f7' }} aria-hidden="true"></div>
-            <div className="h-16 w-24 rounded-full" style={{ background: '#06b6d4' }} aria-hidden="true"></div>
-            <div className="h-16 w-24 rounded-full" style={{ background: '#10b981' }} aria-hidden="true"></div>
+            <div className="h-16 flex-1 rounded-full" style={{ background: 'var(--accent-purple)' }} aria-hidden="true"></div>
+            <div className="h-16 w-24 rounded-full" style={{ background: 'var(--primary-cyan)' }} aria-hidden="true"></div>
+            <div className="h-16 w-24 rounded-full" style={{ background: 'var(--primary-emerald)' }} aria-hidden="true"></div>
           </div>
           
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold sci-heading mb-2" style={{ color: '#14b8a6' }}>
+              <h1 className="text-4xl font-bold sci-heading mb-2" style={{ color: 'var(--text-primary)' }}>
                 SUPPLY CHAIN INTELLIGENCE
               </h1>
-              <p className="text-sm sci-text" style={{ color: '#06b6d4' }}>
+              <p className="text-sm sci-text" style={{ color: 'var(--text-secondary)' }}>
                 REAL-TIME RISK ANALYSIS & MONITORING SYSTEM
               </p>
             </div>
@@ -130,9 +130,9 @@ export default function Dashboard() {
               {user && (
                 <div 
                   className="px-4 py-2 rounded-full"
-                  style={{ background: '#f97316' }}
+                  style={{ background: 'var(--accent-coral)' }}
                 >
-                  <span className="text-xs font-bold" style={{ color: '#000' }}>
+                  <span className="text-xs font-bold" style={{ color: 'var(--text-dark)' }}>
                     USER: {user.username.toUpperCase()}
                   </span>
                 </div>
@@ -142,8 +142,8 @@ export default function Dashboard() {
                 onClick={handleNewResearch}
                 className="px-6 py-3 sci-button"
                 style={{
-                  background: '#06b6d4',
-                  color: '#000',
+                  background: 'var(--primary-cyan)',
+                  color: 'var(--text-dark)',
                   minWidth: '160px',
                 }}
               >
@@ -156,8 +156,8 @@ export default function Dashboard() {
                 }}
                 className="px-6 py-3 sci-button"
                 style={{
-                  background: '#f97316',
-                  color: '#000',
+                  background: 'var(--accent-coral)',
+                  color: 'var(--text-dark)',
                 }}
               >
                 LOGOUT
@@ -184,10 +184,10 @@ export default function Dashboard() {
               className="mb-6 p-4 rounded-2xl corner-tl corner-br"
               style={{
                 background: 'linear-gradient(135deg, #1a0a0a 0%, #0a0000 100%)',
-                border: '2px solid #ef4444',
+                border: '2px solid var(--status-critical)',
               }}
             >
-              <span className="sci-text" style={{ color: '#ef4444' }}>
+              <span className="sci-text" style={{ color: 'var(--status-critical)' }}>
                 ⚠ {error}
               </span>
             </div>
@@ -198,20 +198,20 @@ export default function Dashboard() {
             <div 
               className="rounded-3xl shadow-2xl p-12 flex items-center justify-center min-h-[600px]"
               style={{
-                background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-                border: '3px solid #06b6d4',
+                background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+                border: '3px solid var(--primary-cyan)',
               }}
             >
               <div className="text-center">
                 <div 
                   className="animate-spin rounded-full h-20 w-20 mx-auto mb-6"
                   style={{
-                    border: '4px solid #0a0a0a',
-                    borderTopColor: '#06b6d4',
-                    boxShadow: '0 0 20px #06b6d4',
+                    border: '4px solid var(--bg-dark)',
+                    borderTopColor: 'var(--primary-cyan)',
+                    boxShadow: '0 0 20px var(--primary-cyan)',
                   }}
                 ></div>
-                <p className="text-xl font-bold sci-heading" style={{ color: '#06b6d4' }}>
+                <p className="text-xl font-bold sci-heading" style={{ color: 'var(--primary-cyan)' }}>
                   LOADING REPORT DATA...
                 </p>
               </div>
@@ -222,35 +222,35 @@ export default function Dashboard() {
             <div 
               className="rounded-3xl shadow-2xl p-12 flex items-center justify-center min-h-[600px] relative overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-                border: '3px solid #a855f7',
+                background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+                border: '3px solid var(--accent-purple)',
               }}
             >
               {/* Decorative corner elements */}
-              <div aria-hidden="true" className="absolute top-4 left-4 w-32 h-32 rounded-full" style={{ background: '#14b8a6', opacity: 0.1 }}></div>
-              <div aria-hidden="true" className="absolute bottom-4 right-4 w-40 h-40 rounded-full" style={{ background: '#06b6d4', opacity: 0.1 }}></div>
+              <div aria-hidden="true" className="absolute top-4 left-4 w-32 h-32 rounded-full" style={{ background: 'var(--primary-teal)', opacity: 0.1 }}></div>
+              <div aria-hidden="true" className="absolute bottom-4 right-4 w-40 h-40 rounded-full" style={{ background: 'var(--primary-cyan)', opacity: 0.1 }}></div>
               
               <div className="text-center max-w-md z-10">
                 <div 
                   className="mx-auto h-32 w-32 rounded-full flex items-center justify-center mb-6"
-                  style={{ background: '#a855f7', boxShadow: '0 0 30px rgba(168, 85, 247, 0.5)' }}
+                  style={{ background: 'var(--accent-purple)', boxShadow: '0 0 30px var(--shadow-glow-purple)' }}
                 >
                   <svg className="h-16 w-16" fill="#000" viewBox="0 0 24 24">
                     <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-bold sci-heading mb-4" style={{ color: '#a855f7' }}>
+                <h3 className="text-3xl font-bold sci-heading mb-4" style={{ color: 'var(--accent-purple)' }}>
                   NO REPORT SELECTED
                 </h3>
-                <p className="sci-text mb-8" style={{ color: '#06b6d4' }}>
+                <p className="sci-text mb-8" style={{ color: 'var(--text-secondary)' }}>
                   SELECT A COMPLETED RESEARCH TASK FROM THE MISSION LOGS TO VIEW DETAILED RISK ANALYSIS
                 </p>
                 <button
                   onClick={handleNewResearch}
                   className="inline-flex items-center px-8 py-4 sci-button"
                   style={{
-                    background: '#14b8a6',
-                    color: '#000',
+                    background: 'var(--primary-teal)',
+                    color: 'var(--text-dark)',
                   }}
                 >
                   <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">

@@ -36,11 +36,11 @@ export default function ReportsSidebar({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'COMPLETED': return '#10b981';
-      case 'PROCESSING': return '#06b6d4';
-      case 'PENDING': return '#f59e0b';
-      case 'FAILED': return '#ef4444';
-      default: return '#a855f7';
+      case 'COMPLETED': return 'var(--status-success)';
+      case 'PROCESSING': return 'var(--primary-cyan)';
+      case 'PENDING': return 'var(--status-warning)';
+      case 'FAILED': return 'var(--status-critical)';
+      default: return 'var(--accent-purple)';
     }
   };
 
@@ -62,8 +62,8 @@ export default function ReportsSidebar({
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         style={{
-          background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-          borderRight: '4px solid #14b8a6',
+          background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+          borderRight: '4px solid var(--border-teal)',
         }}
       >
         {/* Toggle Button - Attached to panel edge */}
@@ -72,17 +72,17 @@ export default function ReportsSidebar({
           className="absolute top-1/2 -translate-y-1/2 sci-button transition-all hover:brightness-110"
           style={{
             right: '-40px',
-            background: '#14b8a6',
-            color: '#000',
+            background: 'var(--primary-teal)',
+            color: 'var(--text-dark)',
             width: '40px',
             height: '80px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: '0 12px 12px 0',
-            boxShadow: '2px 0 10px rgba(20, 184, 166, 0.5)',
+            boxShadow: '2px 0 10px var(--shadow-glow-teal)',
             border: 'none',
-            borderLeft: '4px solid #14b8a6',
+            borderLeft: '4px solid var(--border-teal)',
           }}
           aria-label="Toggle sidebar"
         >
@@ -97,15 +97,15 @@ export default function ReportsSidebar({
 
         <div className="h-full flex flex-col">
           {/* LCARS Header */}
-          <div className="p-6 border-b-4" style={{ borderColor: '#14b8a6' }}>
+          <div className="p-6 border-b-4" style={{ borderColor: 'var(--border-teal)' }}>
             {/* Top decorative bar */}
             <div className="flex gap-2 mb-4">
-              <div className="h-12 flex-1 rounded-full" style={{ background: '#14b8a6' }} aria-hidden="true"></div>
-              <div className="h-12 w-12 rounded-full" style={{ background: '#a855f7' }} aria-hidden="true"></div>
-              <div className="h-12 w-12 rounded-full" style={{ background: '#06b6d4' }} aria-hidden="true"></div>
+              <div className="h-12 flex-1 rounded-full" style={{ background: 'var(--primary-teal)' }} aria-hidden="true"></div>
+              <div className="h-12 w-12 rounded-full" style={{ background: 'var(--accent-purple)' }} aria-hidden="true"></div>
+              <div className="h-12 w-12 rounded-full" style={{ background: 'var(--primary-cyan)' }} aria-hidden="true"></div>
             </div>
             
-            <h2 className="text-2xl font-bold sci-heading mb-4" style={{ color: '#14b8a6' }}>
+            <h2 className="text-2xl font-bold sci-heading mb-4" style={{ color: 'var(--text-primary)' }}>
               MISSION LOGS
             </h2>
             
@@ -117,8 +117,8 @@ export default function ReportsSidebar({
                   onClick={() => onFilterChange(status)}
                   className="w-full text-left px-4 py-2 sci-button transition-all"
                   style={{
-                    background: filterStatus === status ? '#14b8a6' : '#f97316',
-                    color: '#000',
+                    background: filterStatus === status ? 'var(--primary-teal)' : 'var(--accent-coral)',
+                    color: 'var(--text-dark)',
                     opacity: filterStatus === status ? 1 : 0.6,
                   }}
                 >
@@ -135,8 +135,8 @@ export default function ReportsSidebar({
                 <div 
                   className="text-xs font-bold mb-3 px-3 py-1 rounded-full inline-block"
                   style={{ 
-                    background: '#06b6d4',
-                    color: '#000',
+                    background: 'var(--primary-cyan)',
+                    color: 'var(--text-dark)',
                     fontFamily: 'Antonio, sans-serif',
                     letterSpacing: '0.15em',
                   }}
@@ -151,9 +151,9 @@ export default function ReportsSidebar({
                       className="w-full text-left transition-all corner-tr corner-bl"
                       style={{
                         background: selectedTaskId === task.task_id 
-                          ? 'linear-gradient(135deg, #1a2a2a 0%, #0f1419 100%)'
-                          : 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-                        border: `2px solid ${selectedTaskId === task.task_id ? '#14b8a6' : '#f97316'}`,
+                          ? 'linear-gradient(135deg, var(--bg-panel-alt-gradient-start) 0%, var(--bg-panel-alt-gradient-end) 100%)'
+                          : 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+                        border: `2px solid ${selectedTaskId === task.task_id ? 'var(--border-teal)' : 'var(--border-coral)'}`,
                         padding: '0',
                         overflow: 'hidden',
                       }}
@@ -169,7 +169,7 @@ export default function ReportsSidebar({
                           <div className="flex items-start justify-between mb-2">
                             <div 
                               className="font-bold text-sm flex-1 sci-heading"
-                              style={{ color: '#14b8a6' }}
+                              style={{ color: 'var(--text-primary)' }}
                             >
                               {task.industry}
                             </div>
@@ -177,7 +177,7 @@ export default function ReportsSidebar({
                               className="ml-2 px-2 py-0.5 rounded-full text-xs font-bold"
                               style={{ 
                                 background: getStatusColor(task.status),
-                                color: '#000',
+                                color: 'var(--text-dark)',
                                 fontFamily: 'Antonio, sans-serif',
                               }}
                             >
@@ -185,7 +185,7 @@ export default function ReportsSidebar({
                             </span>
                           </div>
                           
-                          <div className="text-xs sci-text" style={{ color: '#06b6d4' }}>
+                          <div className="text-xs sci-text" style={{ color: 'var(--text-secondary)' }}>
                             {new Date(task.created_at).toLocaleTimeString('en-US', {
                               hour: '2-digit',
                               minute: '2-digit',
@@ -196,14 +196,14 @@ export default function ReportsSidebar({
                             <div className="mt-2">
                               <div 
                                 className="w-full rounded-full h-2"
-                                style={{ background: '#0a0a1a' }}
+                                style={{ background: 'var(--bg-dark)' }}
                               >
                                 <div
                                   className="h-2 rounded-full transition-all duration-300"
                                   style={{ 
                                     width: `${task.progress}%`,
-                                    background: '#06b6d4',
-                                    boxShadow: '0 0 10px #06b6d4',
+                                    background: 'var(--primary-cyan)',
+                                    boxShadow: '0 0 10px var(--primary-cyan)',
                                   }}
                                 />
                               </div>
@@ -221,13 +221,13 @@ export default function ReportsSidebar({
               <div className="text-center py-12">
                 <div 
                   className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center"
-                  style={{ background: '#f97316', opacity: 0.3 }}
+                  style={{ background: 'var(--accent-coral)', opacity: 0.3 }}
                 >
-                  <svg className="w-10 h-10" fill="#000" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10" fill="var(--text-dark)" viewBox="0 0 24 24">
                     <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <p className="text-sm sci-text" style={{ color: '#f97316' }}>
+                <p className="text-sm sci-text" style={{ color: 'var(--text-accent)' }}>
                   NO REPORTS IN DATABASE
                 </p>
               </div>
@@ -239,7 +239,8 @@ export default function ReportsSidebar({
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-30"
+          className="fixed inset-0 z-30"
+          style={{ background: 'var(--overlay-dark)' }}
           onClick={() => setIsOpen(false)}
         />
       )}

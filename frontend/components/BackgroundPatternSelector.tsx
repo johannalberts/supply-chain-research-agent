@@ -37,8 +37,8 @@ export default function BackgroundPatternSelector() {
         onClick={() => setIsOpen(!isOpen)}
         className="px-4 py-2 sci-button flex items-center gap-2"
         style={{
-          background: '#14b8a6',
-          color: '#000',
+          background: 'var(--primary-teal)',
+          color: 'var(--text-dark)',
           minWidth: '180px',
         }}
       >
@@ -59,8 +59,8 @@ export default function BackgroundPatternSelector() {
         <div
           className="absolute top-full mt-2 right-0 rounded-2xl overflow-hidden z-50"
           style={{
-            background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
-            border: '2px solid #14b8a6',
+            background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+            border: '2px solid var(--border-teal)',
             minWidth: '280px',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
           }}
@@ -69,7 +69,7 @@ export default function BackgroundPatternSelector() {
             <div
               className="px-3 py-2 text-xs font-bold mb-2"
               style={{
-                color: '#06b6d4',
+                color: 'var(--text-secondary)',
                 fontFamily: 'Antonio, sans-serif',
                 letterSpacing: '0.15em',
               }}
@@ -86,14 +86,14 @@ export default function BackgroundPatternSelector() {
                 className="w-full text-left px-4 py-3 rounded-xl transition-all"
                 style={{
                   background: backgroundPattern === pattern.value
-                    ? 'linear-gradient(90deg, #14b8a6 0%, #06b6d4 100%)'
+                    ? 'linear-gradient(90deg, var(--primary-teal) 0%, var(--primary-cyan) 100%)'
                     : 'transparent',
-                  color: backgroundPattern === pattern.value ? '#000' : '#14b8a6',
+                  color: backgroundPattern === pattern.value ? 'var(--text-dark)' : 'var(--text-primary)',
                   border: backgroundPattern === pattern.value ? 'none' : '1px solid transparent',
                 }}
                 onMouseEnter={(e) => {
                   if (backgroundPattern !== pattern.value) {
-                    e.currentTarget.style.border = '1px solid #14b8a6';
+                    e.currentTarget.style.border = '1px solid var(--border-teal)';
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -108,7 +108,7 @@ export default function BackgroundPatternSelector() {
                 <div
                   className="text-xs sci-text"
                   style={{
-                    color: backgroundPattern === pattern.value ? '#000' : '#06b6d4',
+                    color: backgroundPattern === pattern.value ? 'var(--text-dark)' : 'var(--text-secondary)',
                     opacity: 0.8,
                   }}
                 >

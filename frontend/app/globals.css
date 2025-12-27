@@ -16,6 +16,10 @@
   --bg-dark: #0a0a0a;
   --bg-panel: #0f1419;
   --bg-screen: #0d1b2a;
+  --bg-panel-gradient-start: #0f1419;
+  --bg-panel-gradient-end: #0a0a0a;
+  --bg-panel-alt-gradient-start: #1a2a2a;
+  --bg-panel-alt-gradient-end: #0f1419;
   
   /* Status colors */
   --status-critical: #ef4444;
@@ -27,6 +31,21 @@
   --text-primary: #14b8a6;
   --text-secondary: #06b6d4;
   --text-accent: #f97316;
+  --text-dark: #000;
+  
+  /* Borders */
+  --border-teal: #14b8a6;
+  --border-coral: #f97316;
+  --border-dark: #333;
+  
+  /* Effects */
+  --shadow-glow-teal: rgba(20, 184, 166, 0.5);
+  --shadow-glow-purple: rgba(168, 85, 247, 0.5);
+  --shadow-glow-cyan: rgba(6, 182, 212, 0.5);
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+  
+  /* Segment colors (for gauges) */
+  --segment-empty: #1a1a1a;
   
   --background: var(--bg-dark);
   --foreground: var(--text-primary);
