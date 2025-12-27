@@ -112,9 +112,9 @@ export default function Dashboard() {
             <div className="h-16 w-32 rounded-full flex items-center justify-center" style={{ background: '#14b8a6' }}>
               <span className="font-bold text-black text-sm">MAIN</span>
             </div>
-            <div className="h-16 flex-1 rounded-full" style={{ background: '#a855f7' }}></div>
-            <div className="h-16 w-24 rounded-full" style={{ background: '#06b6d4' }}></div>
-            <div className="h-16 w-24 rounded-full" style={{ background: '#10b981' }}></div>
+            <div className="h-16 flex-1 rounded-full" style={{ background: '#a855f7' }} aria-hidden="true"></div>
+            <div className="h-16 w-24 rounded-full" style={{ background: '#06b6d4' }} aria-hidden="true"></div>
+            <div className="h-16 w-24 rounded-full" style={{ background: '#10b981' }} aria-hidden="true"></div>
           </div>
           
           <div className="flex items-center justify-between">
