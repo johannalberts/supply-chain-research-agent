@@ -78,7 +78,6 @@ export default function BackgroundPatternSelector() {
               <button
                 key={pattern.value}
                 onClick={() => {
-                  console.log('🎨 Pattern selected:', pattern.value);
                   setBackgroundPattern(pattern.value as any);
                   setIsOpen(false);
                 }}
