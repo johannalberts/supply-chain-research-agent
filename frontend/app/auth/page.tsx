@@ -35,9 +35,9 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: '#000000' }}>
-      {/* LCARS Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
+    <div className="min-h-screen flex items-center justify-center relative" style={{ zIndex: 2 }}>
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20" style={{ zIndex: -1 }}>
         <div className="absolute top-0 left-0 w-96 h-96 rounded-full" style={{ background: '#14b8a6' }}></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full" style={{ background: '#06b6d4' }}></div>
         <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full" style={{ background: '#a855f7' }}></div>
@@ -179,7 +179,6 @@ export default function AuthPage() {
               }}
               className="sci-text font-bold transition-all"
               style={{ color: '#14b8a6' }}>
-            >
               {isLogin ? 'NEW USER? REGISTER HERE' : 'EXISTING USER? AUTHENTICATE'}
             </button>
           </div>
