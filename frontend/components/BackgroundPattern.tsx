@@ -44,18 +44,18 @@ export default function BackgroundPattern() {
           `,
           backgroundSize: '50px 50px',
         };
-      
+
       case 'hexagon':
         return {
             backgroundImage: `url("data:image/svg+xml,${svgHexPattern}")`,
             backgroundSize: '56px 98px'
-            };
-      
+        };
+
       case 'circuit':
         return {
             backgroundImage: `url("data:image/svg+xml,${circuitPattern}")`,
             backgroundSize: '200px 200px', // Scale this up or down for density
-            };
+        };
       
       case 'dots':
         return {
@@ -66,7 +66,7 @@ export default function BackgroundPattern() {
           backgroundSize: '30px 30px',
           backgroundPosition: '0 0, 15px 15px',
         };
-      
+
       default:
         return {};
     }
