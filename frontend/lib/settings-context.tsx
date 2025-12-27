@@ -16,32 +16,25 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    console.log('🎨 Settings context: Mounting, checking localStorage');
     if (typeof window === 'undefined' || !('localStorage' in window)) {
-      console.log('🎨 Settings context: window.localStorage is not available; skipping load');
       return;
     }
     try {
       const saved = window.localStorage.getItem('backgroundPattern') as BackgroundPattern;
-      console.log('🎨 Settings context: Saved pattern from localStorage:', saved);
       if (saved) {
         setBackgroundPattern(saved);
       }
     } catch (error) {
-      console.error('🎨 Settings context: Error accessing localStorage while loading pattern', error);
     }
   }, []);
   // Save to localStorage when changed
   const handleSetPattern = (pattern: BackgroundPattern) => {
-    console.log('🎨 Settings context: Setting pattern to', pattern);
     setBackgroundPattern(pattern);
     if (typeof window === 'undefined' || !('localStorage' in window)) {
-      console.log('🎨 Settings context: window.localStorage is not available; skipping save');
       return;
     }
     try {
       window.localStorage.setItem('backgroundPattern', pattern);
-      console.log('🎨 Settings context: Pattern set and saved to localStorage');
     } catch (error) {
       console.error('🎨 Settings context: Error accessing localStorage while saving pattern', error);
     }

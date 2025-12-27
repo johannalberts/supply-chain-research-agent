@@ -97,7 +97,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen relative" style={{ background: 'transparent' }}>
+    <div className="min-h-screen relative" style={{ background: '#0a0a0a' }}>
       {/* LCARS Header */}
       <header 
         className="sticky top-0 z-10 relative"
