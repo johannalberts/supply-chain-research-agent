@@ -6,134 +6,96 @@ interface RadialGaugeProps {
   size?: number;
 }
 
-export default function RadialGauge({ value, label, size = 160 }: RadialGaugeProps) {
-  const radius = size / 2 - 10;
-  const circumference = 2 * Math.PI * radius;
-  const center = size / 2;
-  
-  // Calculate stroke offset for the arc (starts at -90 degrees, goes 270 degrees)
-  const offset = circumference - (value / 100) * (circumference * 0.75);
-  
+export default function RadialGauge({ value, label, size = 180 }: RadialGaugeProps) {
   // Determine color based on value (higher = worse = red)
   const getColor = () => {
-    if (value >= 70) return '#ef4444'; // Red - Critical
-    if (value >= 40) return '#f59e0b'; // Amber - Warning
-    return '#10b981'; // Green - Low risk
+    if (value >= 70) return '#ef4444'; // Critical Red
+    if (value >= 40) return '#f59e0b'; // Warning Amber
+    return '#14b8a6'; // Success Teal
   };
   
-  const getZoneColor = (zone: 'green' | 'amber' | 'red') => {
-    if (zone === 'green') return '#10b981';
-    if (zone === 'amber') return '#f59e0b';
-    return '#ef4444';
+  const getStatusText = () => {
+    if (value >= 70) return 'CRITICAL';
+    if (value >= 40) return 'CAUTION';
+    return 'NOMINAL';
   };
-  
-  const isInZone = (zone: 'green' | 'amber' | 'red') => {
-    if (zone === 'green') return value < 40;
-    if (zone === 'amber') return value >= 40 && value < 70;
-    return value >= 70;
-  };
-  
-  // Calculate needle rotation (starts at -135 deg, rotates 270 deg total)
-  const needleRotation = -135 + (value / 100) * 270;
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="relative" style={{ width: size, height: size }}>
-        <svg width={size} height={size} className="transform -rotate-90">
-          {/* Background zones */}
-          <circle
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke="#f0f0f0"
-            strokeWidth="20"
-            strokeDasharray={`${circumference * 0.75} ${circumference}`}
-            strokeLinecap="round"
-          />
-          
-          {/* Green zone (0-40) */}
-          <circle
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke={getZoneColor('green')}
-            strokeWidth="20"
-            strokeDasharray={`${circumference * 0.3} ${circumference}`}
-            strokeDashoffset={0}
-            strokeLinecap="round"
-            opacity={isInZone('green') ? 1 : 0.3}
-          />
-          
-          {/* Amber zone (40-70) */}
-          <circle
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke={getZoneColor('amber')}
-            strokeWidth="20"
-            strokeDasharray={`${circumference * 0.225} ${circumference}`}
-            strokeDashoffset={-circumference * 0.3}
-            strokeLinecap="round"
-            opacity={isInZone('amber') ? 1 : 0.3}
-          />
-          
-          {/* Red zone (70-100) */}
-          <circle
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke={getZoneColor('red')}
-            strokeWidth="20"
-            strokeDasharray={`${circumference * 0.225} ${circumference}`}
-            strokeDashoffset={-circumference * 0.525}
-            strokeLinecap="round"
-            opacity={isInZone('red') ? 1 : 0.3}
-          />
-          
-          {/* Value arc */}
-          <circle
-            cx={center}
-            cy={center}
-            r={radius}
-            fill="none"
-            stroke={getColor()}
-            strokeWidth="22"
-            strokeDasharray={`${circumference * 0.75} ${circumference}`}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            className="transition-all duration-1000 ease-out"
-            style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
-          />
-        </svg>
-        
-        {/* Needle */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center transition-transform duration-1000 ease-out"
-          style={{ 
-            transform: `rotate(${needleRotation}deg)`,
-            transformOrigin: 'center center'
-          }}
-        >
-          <div className="absolute" style={{ width: '2px', height: `${radius - 15}px`, backgroundColor: '#1f2937', bottom: '50%', left: '50%', marginLeft: '-1px' }}>
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-800 rounded-full"></div>
+    <div className="flex flex-col items-center gap-3" style={{ position: 'relative', zIndex: 0 }}>
+      {/* Futuristic Gauge Display */}
+      <div 
+        className="relative flex items-center justify-center sci-panel"
+        style={{ 
+          width: size, 
+          height: size * 0.7,
+          background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
+          border: `3px solid ${getColor()}`,
+          boxShadow: `inset 0 0 20px rgba(0,0,0,0.5), 0 0 20px ${getColor()}40`,
+          position: 'relative',
+          zIndex: 0,
+        }}
+      >
+        {/* Left decorative bars */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col gap-1 p-1">
+          <div className="flex-1 rounded-full" style={{ background: '#14b8a6' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#a855f7' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#06b6d4' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#10b981' }}></div>
+        </div>
+
+        {/* Right decorative bars */}
+        <div className="absolute right-0 top-0 bottom-0 w-12 flex flex-col gap-1 p-1">
+          <div className="flex-1 rounded-full" style={{ background: '#f97316' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#f59e0b' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#fb7185' }}></div>
+          <div className="flex-1 rounded-full" style={{ background: '#6366f1' }}></div>
+        </div>
+
+        {/* Center value display */}
+        <div className="flex flex-col items-center justify-center" style={{ position: 'relative', zIndex: 1 }}>
+          <div 
+            className="text-6xl font-bold sci-text glow-effect transition-all duration-500"
+            style={{ 
+              color: getColor(),
+              fontFamily: 'Orbitron, monospace',
+              fontWeight: 900,
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {value}
+          </div>
+          <div 
+            className="text-xs font-bold mt-1 px-3 py-1 rounded-full"
+            style={{ 
+              background: getColor(),
+              color: '#000',
+              fontFamily: 'Antonio, sans-serif',
+              letterSpacing: '0.1em',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {getStatusText()}
           </div>
         </div>
-        
-        {/* Center circle */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-gray-100">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{value}</div>
-            </div>
-          </div>
-        </div>
+
+        {/* Corner accents */}
+        <div className="absolute top-2 left-14 w-8 h-1 rounded-full" style={{ background: getColor(), opacity: 0.5 }}></div>
+        <div className="absolute top-2 right-14 w-8 h-1 rounded-full" style={{ background: getColor(), opacity: 0.5 }}></div>
+        <div className="absolute bottom-2 left-14 w-8 h-1 rounded-full" style={{ background: getColor(), opacity: 0.5 }}></div>
+        <div className="absolute bottom-2 right-14 w-8 h-1 rounded-full" style={{ background: getColor(), opacity: 0.5 }}></div>
       </div>
       
-      <div className="mt-2 text-sm font-medium text-gray-700 text-center">
+      {/* Label with futuristic styling */}
+      <div 
+        className="text-sm font-bold text-center px-4 py-2 rounded-full sci-button"
+        style={{ 
+          background: '#14b8a6',
+          color: '#000',
+          minWidth: '140px',
+        }}
+      >
         {label}
       </div>
     </div>
