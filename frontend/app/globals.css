@@ -144,3 +144,59 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #a855f7 #0f1419;
 }
+
+/* Background Patterns */
+.bg-pattern-grid {
+  background-image: 
+    linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.bg-pattern-hexagon {
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(20, 184, 166, 0.02) 2px, transparent 2px),
+    radial-gradient(circle at 75px 75px, rgba(168, 85, 247, 0.02) 2px, transparent 2px);
+  background-size: 100px 100px;
+  position: relative;
+}
+
+.bg-pattern-hexagon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(30deg, transparent 48%, rgba(20, 184, 166, 0.02) 49%, rgba(20, 184, 166, 0.02) 51%, transparent 52%),
+    linear-gradient(150deg, transparent 48%, rgba(20, 184, 166, 0.02) 49%, rgba(20, 184, 166, 0.02) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, rgba(20, 184, 166, 0.02) 49%, rgba(20, 184, 166, 0.02) 51%, transparent 52%);
+  background-size: 60px 104px;
+  pointer-events: none;
+}
+
+.bg-pattern-circuit {
+  background-image:
+    linear-gradient(90deg, transparent 79px, rgba(20, 184, 166, 0.03) 79px, rgba(20, 184, 166, 0.03) 81px, transparent 81px),
+    linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  position: relative;
+}
+
+.bg-pattern-circuit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 80px 80px, rgba(168, 85, 247, 0.04) 3px, transparent 3px),
+    radial-gradient(circle at 0px 0px, rgba(6, 182, 212, 0.04) 3px, transparent 3px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.bg-pattern-dots {
+  background-image: 
+    radial-gradient(circle, rgba(20, 184, 166, 0.04) 1px, transparent 1px),
+    radial-gradient(circle, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+

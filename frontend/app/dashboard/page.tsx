@@ -8,6 +8,7 @@ import { TaskStatus, Report } from '@/lib/types';
 import ReportsSidebar from '@/components/ReportsSidebar';
 import ReportDetail from '@/components/ReportDetail';
 import NewResearchModal from '@/components/NewResearchModal';
+import BackgroundPatternSelector from '@/components/BackgroundPatternSelector';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -96,10 +97,10 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#000000' }}>
+    <div className="min-h-screen relative" style={{ background: 'transparent' }}>
       {/* LCARS Header */}
       <header 
-        className="sticky top-0 z-10"
+        className="sticky top-0 z-10 relative"
         style={{
           background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
           borderBottom: '4px solid #14b8a6',
@@ -136,6 +137,7 @@ export default function Dashboard() {
                   </span>
                 </div>
               )}
+              <BackgroundPatternSelector />
               <button
                 onClick={handleNewResearch}
                 className="px-6 py-3 sci-button"
@@ -175,7 +177,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content */}
-      <main className="pt-8 px-4 sm:px-6 lg:px-8 pb-12 sci-scrollbar">
+      <main className="pt-8 px-4 sm:px-6 lg:px-8 pb-12 sci-scrollbar relative" style={{ zIndex: 2 }}>
         <div className="max-w-7xl mx-auto">
           {error && (
             <div 

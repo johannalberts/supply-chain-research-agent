@@ -63,7 +63,7 @@ export default function AuthPage() {
               STARFLEET COMMAND
             </h1>
             <p className="sci-text" style={{ color: '#06b6d4' }}>
-              {isLogin ? 'OFFICER AUTHENTICATION' : 'NEW OFFICER REGISTRATION'}
+              {isLogin ? 'USER AUTHENTICATION' : 'NEW USER REGISTRATION'}
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export default function AuthPage() {
                   border: '2px solid #f97316',
                   color: '#06b6d4',
                 }}
-                placeholder="ENTER OFFICER ID"
+                placeholder="ENTER USER ID"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function AuthPage() {
                 fontSize: '1.1rem',
               }}
             >
-              {isLoading ? 'PROCESSING...' : isLogin ? 'AUTHENTICATE' : 'REGISTER OFFICER'}
+              {isLoading ? 'PROCESSING...' : isLogin ? 'AUTHENTICATE' : 'REGISTER USER'}
             </button>
           </form>
 
@@ -180,7 +180,7 @@ export default function AuthPage() {
               className="sci-text font-bold transition-all"
               style={{ color: '#14b8a6' }}>
             >
-              {isLogin ? 'NEW OFFICER? REGISTER HERE' : 'EXISTING OFFICER? AUTHENTICATE'}
+              {isLogin ? 'NEW USER? REGISTER HERE' : 'EXISTING USER? AUTHENTICATE'}
             </button>
           </div>
         </div>
