@@ -19,11 +19,11 @@ export default function ReportDetail({ report }: ReportDetailProps) {
         }}
       >
         {/* Top decorative bars */}
-        <div className="absolute top-0 left-0 right-0 flex gap-2 p-4">
-          <div className="h-3 flex-1 rounded-full" style={{ background: '#14b8a6' }}></div>
-          <div className="h-3 w-20 rounded-full" style={{ background: '#a855f7' }}></div>
-          <div className="h-3 w-20 rounded-full" style={{ background: '#06b6d4' }}></div>
-          <div className="h-3 w-20 rounded-full" style={{ background: '#10b981' }}></div>
+        <div aria-hidden="true" className="absolute top-0 left-0 right-0 flex gap-2 p-4">
+          <div aria-hidden="true" className="h-3 flex-1 rounded-full" style={{ background: '#14b8a6' }}></div>
+          <div aria-hidden="true" className="h-3 w-20 rounded-full" style={{ background: '#a855f7' }}></div>
+          <div aria-hidden="true" className="h-3 w-20 rounded-full" style={{ background: '#06b6d4' }}></div>
+          <div aria-hidden="true" className="h-3 w-20 rounded-full" style={{ background: '#10b981' }}></div>
         </div>
 
         <div className="mt-8 mb-6">
