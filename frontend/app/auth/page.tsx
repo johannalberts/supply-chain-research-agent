@@ -52,9 +52,9 @@ export default function AuthPage() {
       >
         {/* Top LCARS decorative bars */}
         <div className="flex gap-2 p-4">
-          <div className="h-20 flex-1 rounded-full" style={{ background: '#14b8a6' }}></div>
-          <div className="h-20 w-20 rounded-full" style={{ background: '#a855f7' }}></div>
-          <div className="h-20 w-20 rounded-full" style={{ background: '#06b6d4' }}></div>
+          <div className="h-20 flex-1 rounded-full" style={{ background: '#14b8a6' }} aria-hidden="true"></div>
+          <div className="h-20 w-20 rounded-full" style={{ background: '#a855f7' }} aria-hidden="true"></div>
+          <div className="h-20 w-20 rounded-full" style={{ background: '#06b6d4' }} aria-hidden="true"></div>
         </div>
 
         <div className="p-8">
@@ -186,9 +186,9 @@ export default function AuthPage() {
 
         {/* Bottom LCARS decorative bars */}
         <div className="flex gap-2 p-4">
-          <div className="h-20 w-20 rounded-full" style={{ background: '#f97316' }}></div>
-          <div className="h-20 w-20 rounded-full" style={{ background: '#f59e0b' }}></div>
-          <div className="h-20 flex-1 rounded-full" style={{ background: '#fb7185' }}></div>
+          <div className="h-20 w-20 rounded-full" style={{ background: '#f97316' }} aria-hidden="true"></div>
+          <div className="h-20 w-20 rounded-full" style={{ background: '#f59e0b' }} aria-hidden="true"></div>
+          <div className="h-20 flex-1 rounded-full" style={{ background: '#fb7185' }} aria-hidden="true"></div>
         </div>
       </div>
     </div>
