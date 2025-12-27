@@ -60,7 +60,7 @@ export default function AuthPage() {
         <div className="p-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold sci-heading mb-3" style={{ color: '#14b8a6' }}>
-              STARFLEET COMMAND
+              SUPPLY CHAIN INTELLIGENCE SYSTEM
             </h1>
             <p className="sci-text" style={{ color: '#06b6d4' }}>
               {isLogin ? 'USER AUTHENTICATION' : 'NEW USER REGISTRATION'}
@@ -124,7 +124,7 @@ export default function AuthPage() {
                 className="block text-xs font-bold mb-2 sci-heading"
                 style={{ color: '#14b8a6' }}
               >
-                SECURITY CODE
+                PASSWORD
               </label>
               <input
                 id="password"
@@ -138,7 +138,7 @@ export default function AuthPage() {
                   border: '2px solid #f97316',
                   color: '#06b6d4',
                 }}
-                placeholder="ENTER ACCESS CODE"
+                placeholder="ENTER PASSWORD"
               />
             </div>
 
