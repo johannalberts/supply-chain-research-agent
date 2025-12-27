@@ -119,10 +119,10 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
         </div>
 
         {/* Corner decorative accents */}
-        <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 rounded-tl-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
-        <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 rounded-tr-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
-        <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 rounded-bl-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
-        <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 rounded-br-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
+        <div aria-hidden="true" className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 rounded-tl-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
+        <div aria-hidden="true" className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 rounded-tr-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
+        <div aria-hidden="true" className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 rounded-bl-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
+        <div aria-hidden="true" className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 rounded-br-lg" style={{ borderColor: getColor(), opacity: 0.5 }}></div>
       </div>
       
       {/* Label with futuristic styling */}
@@ -139,4 +139,3 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
     </div>
   );
 }
-
