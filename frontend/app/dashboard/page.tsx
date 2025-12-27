@@ -133,7 +133,7 @@ export default function Dashboard() {
                   style={{ background: '#f97316' }}
                 >
                   <span className="text-xs font-bold" style={{ color: '#000' }}>
-                    OFFICER: {user.username.toUpperCase()}
+                    USER: {user.username.toUpperCase()}
                   </span>
                 </div>
               )}
@@ -227,8 +227,8 @@ export default function Dashboard() {
               }}
             >
               {/* Decorative corner elements */}
-              <div className="absolute top-4 left-4 w-32 h-32 rounded-full" style={{ background: '#14b8a6', opacity: 0.1 }}></div>
-              <div className="absolute bottom-4 right-4 w-40 h-40 rounded-full" style={{ background: '#06b6d4', opacity: 0.1 }}></div>
+              <div aria-hidden="true" className="absolute top-4 left-4 w-32 h-32 rounded-full" style={{ background: '#14b8a6', opacity: 0.1 }}></div>
+              <div aria-hidden="true" className="absolute bottom-4 right-4 w-40 h-40 rounded-full" style={{ background: '#06b6d4', opacity: 0.1 }}></div>
               
               <div className="text-center max-w-md z-10">
                 <div 
