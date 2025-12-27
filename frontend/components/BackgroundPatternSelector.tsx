@@ -3,12 +3,14 @@
 import { useSettings } from '@/lib/settings-context';
 import { useState, useRef, useEffect } from 'react';
 
+type BackgroundPattern = 'none' | 'grid' | 'hexagon' | 'circuit' | 'dots';
+
 export default function BackgroundPatternSelector() {
   const { backgroundPattern, setBackgroundPattern } = useSettings();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const patterns = [
+  const patterns: Array<{ value: BackgroundPattern; label: string; description: string }> = [
     { value: 'none', label: 'NONE', description: 'Solid background' },
     { value: 'grid', label: 'GRID', description: 'Technical grid pattern' },
     { value: 'hexagon', label: 'HEXAGON', description: 'Honeycomb structure' },
@@ -78,7 +80,7 @@ export default function BackgroundPatternSelector() {
               <button
                 key={pattern.value}
                 onClick={() => {
-                  setBackgroundPattern(pattern.value as any);
+                  setBackgroundPattern(pattern.value);
                   setIsOpen(false);
                 }}
                 className="w-full text-left px-4 py-3 rounded-xl transition-all"
