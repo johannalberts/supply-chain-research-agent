@@ -100,9 +100,9 @@ export default function ReportsSidebar({
           <div className="p-6 border-b-4" style={{ borderColor: '#14b8a6' }}>
             {/* Top decorative bar */}
             <div className="flex gap-2 mb-4">
-              <div className="h-12 flex-1 rounded-full" style={{ background: '#14b8a6' }}></div>
-              <div className="h-12 w-12 rounded-full" style={{ background: '#a855f7' }}></div>
-              <div className="h-12 w-12 rounded-full" style={{ background: '#06b6d4' }}></div>
+              <div className="h-12 flex-1 rounded-full" style={{ background: '#14b8a6' }} aria-hidden="true"></div>
+              <div className="h-12 w-12 rounded-full" style={{ background: '#a855f7' }} aria-hidden="true"></div>
+              <div className="h-12 w-12 rounded-full" style={{ background: '#06b6d4' }} aria-hidden="true"></div>
             </div>
             
             <h2 className="text-2xl font-bold sci-heading mb-4" style={{ color: '#14b8a6' }}>
