@@ -28,15 +28,11 @@ export default function BackgroundPattern() {
   const { backgroundPattern } = useSettings();
 
   useEffect(() => {
-    console.log('🎨 BackgroundPattern rendered with pattern:', backgroundPattern);
   }, [backgroundPattern]);
 
   if (backgroundPattern === 'none') {
-    console.log('🎨 Pattern is none, not rendering');
     return null;
   }
-
-  console.log('🎨 Rendering pattern:', backgroundPattern);
 
   const getPatternStyle = (): CSSProperties => {
     switch (backgroundPattern) {
@@ -77,7 +73,6 @@ export default function BackgroundPattern() {
   };
 
   const patternStyle = getPatternStyle();
-  console.log('🎨 Pattern style object:', patternStyle);
 
   return (
     <div
