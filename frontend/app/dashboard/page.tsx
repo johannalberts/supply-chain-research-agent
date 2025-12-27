@@ -175,7 +175,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content */}
-      <main className="pt-8 px-4 sm:px-6 lg:px-8 pb-12\">
+      <main className="pt-8 px-4 sm:px-6 lg:px-8 pb-12 sci-scrollbar">
         <div className="max-w-7xl mx-auto">
           {error && (
             <div 

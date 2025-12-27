@@ -56,32 +56,7 @@ export default function ReportsSidebar({
 
   return (
     <>
-      {/* Toggle Button - LCARS Style */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed left-4 top-24 z-50 sci-button transition-all hover:scale-105"
-        style={{
-          background: '#14b8a6',
-          color: '#000',
-          width: '60px',
-          height: '60px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 0 20px rgba(255, 153, 102, 0.5)',
-        }}
-        aria-label="Toggle sidebar"
-      >
-        <svg
-          className={`w-6 h-6 transition-transform ${isOpen ? 'rotate-0' : 'rotate-180'}`}
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-        </svg>
-      </button>
-
-      {/* Sidebar - LCARS Style */}
+      {/* Sidebar */}
       <div
         className={`fixed left-0 top-0 bottom-0 w-96 transform transition-transform duration-300 ease-in-out z-40 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
@@ -91,6 +66,35 @@ export default function ReportsSidebar({
           borderRight: '4px solid #14b8a6',
         }}
       >
+        {/* Toggle Button - Attached to panel edge */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="absolute top-1/2 -translate-y-1/2 sci-button transition-all hover:brightness-110"
+          style={{
+            right: '-40px',
+            background: '#14b8a6',
+            color: '#000',
+            width: '40px',
+            height: '80px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '0 12px 12px 0',
+            boxShadow: '2px 0 10px rgba(20, 184, 166, 0.5)',
+            border: 'none',
+            borderLeft: '4px solid #14b8a6',
+          }}
+          aria-label="Toggle sidebar"
+        >
+          <svg
+            className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-0' : 'rotate-180'}`}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+
         <div className="h-full flex flex-col">
           {/* LCARS Header */}
           <div className="p-6 border-b-4" style={{ borderColor: '#14b8a6' }}>
@@ -125,7 +129,7 @@ export default function ReportsSidebar({
           </div>
 
           {/* Reports List */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 sci-scrollbar">
             {Object.entries(groupedTasks).map(([date, dateTasks]) => (
               <div key={date}>
                 <div 
