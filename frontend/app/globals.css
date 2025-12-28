@@ -47,6 +47,11 @@
   /* Segment colors (for gauges) */
   --segment-empty: #1a1a1a;
   
+  /* Sidebar dimensions */
+  --sidebar-toggle-width: 40px;
+  --sidebar-toggle-height: 80px;
+  --sidebar-toggle-radius: 12px;
+  
   --background: var(--bg-dark);
   --foreground: var(--text-primary);
 }

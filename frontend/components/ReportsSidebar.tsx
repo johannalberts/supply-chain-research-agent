@@ -71,15 +71,15 @@ export default function ReportsSidebar({
           onClick={() => setIsOpen(!isOpen)}
           className="absolute top-1/2 -translate-y-1/2 sci-button transition-all hover:brightness-110"
           style={{
-            right: '-40px',
+            right: 'calc(-1 * var(--sidebar-toggle-width))',
             background: 'var(--primary-teal)',
             color: 'var(--text-dark)',
-            width: '40px',
-            height: '80px',
+            width: 'var(--sidebar-toggle-width)',
+            height: 'var(--sidebar-toggle-height)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: '0 12px 12px 0',
+            borderRadius: '0 var(--sidebar-toggle-radius) var(--sidebar-toggle-radius) 0',
             boxShadow: '2px 0 10px var(--shadow-glow-teal)',
             border: 'none',
             borderLeft: '4px solid var(--border-teal)',
