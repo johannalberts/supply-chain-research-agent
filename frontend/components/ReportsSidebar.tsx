@@ -163,6 +163,8 @@ export default function ReportsSidebar({
                         <div 
                           className="w-3"
                           style={{ background: getStatusColor(task.status) }}
+                          aria-label={`Status: ${getStatusLabel(task.status)}`}
+                          role="img"
                         ></div>
                         
                         <div className="flex-1 p-3">
