@@ -70,10 +70,10 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
         <div 
           className="text-5xl font-bold sci-text mb-4"
           style={{ 
-            color: getColor(),
+            color: 'var(--text-white)',
             fontFamily: 'Orbitron, monospace',
             fontWeight: 900,
-            textShadow: `0 0 10px ${getColor()}, 0 0 20px ${getColor()}`,
+            textShadow: '0 0 10px var(--text-white-glow), 0 0 20px var(--text-white-glow-soft), 0 0 30px var(--text-white-glow-subtle)',
           }}
           aria-hidden="true"
         >

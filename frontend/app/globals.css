@@ -32,6 +32,10 @@
   --text-secondary: #06b6d4;
   --text-accent: #f97316;
   --text-dark: #000;
+  --text-white: #ffffff;
+  --text-white-glow: rgba(255, 255, 255, 0.8);
+  --text-white-glow-soft: rgba(255, 255, 255, 0.5);
+  --text-white-glow-subtle: rgba(255, 255, 255, 0.3);
   
   /* Borders */
   --border-teal: #14b8a6;
