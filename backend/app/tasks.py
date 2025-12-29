@@ -34,6 +34,7 @@ def run_research_task(self, task_id: str, industry: str):
         initial_state = {
             "industry": industry,
             "raw_data": [],
+            "sources": [],
             "risk_report": "",
             "critical_alerts": [],
             "fragility_score": 0,
@@ -56,7 +57,8 @@ def run_research_task(self, task_id: str, industry: str):
                 fragility_score=final_state["fragility_score"],
                 executive_summary=final_state["risk_report"],
                 critical_alerts=final_state["critical_alerts"],
-                risk_metrics=final_state["risk_metrics"]
+                risk_metrics=final_state["risk_metrics"],
+                sources=final_state.get("sources", [])
             )
             
             # Update task status to completed

@@ -7,6 +7,10 @@ from tavily import TavilyClient
 from django.conf import settings
 import os
 
+class Source(BaseModel):
+    url: str = Field(description="URL of the source article")
+    title: str = Field(description="Title of the source article")
+
 tavily = TavilyClient(api_key=settings.TAVILY_API_KEY)
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -18,6 +22,7 @@ llm = ChatGoogleGenerativeAI(
 class AgentState(TypedDict):
     industry: str
     raw_data: List[str]
+    sources: List[dict]
     risk_report: str
     critical_alerts: List[str]
     fragility_score: int
@@ -35,6 +40,7 @@ class AnalystOutput(BaseModel):
     fragility_score: int = Field(description="Overall 1-10 score for the industry")
     risk_metrics: List[RiskMetric]
     critical_alerts: List[str]
+    sources: List[Source] = Field(description="List of source articles used in the analysis")
 
 
 # 2. Define the Nodes
@@ -60,8 +66,17 @@ def researcher_node(state):
         f"Source: {r['url']}\nContent: {r['content']}" 
         for r in search_result['results']
     ]
+    
+    # Extract sources for reference tracking
+    sources = [
+        {
+            'url': r['url'],
+            'title': r.get('title', r['url'])  # Use URL as fallback if title not available
+        }
+        for r in search_result['results']
+    ]
 
-    return {"raw_data": raw_data}
+    return {"raw_data": raw_data, "sources": sources}
 
 def risk_analyst_node(state):
     raw_text = "\n\n".join(state["raw_data"])
@@ -92,7 +107,8 @@ def risk_analyst_node(state):
         "risk_report": analysis.executive_summary,
         "critical_alerts": analysis.critical_alerts,
         "fragility_score": analysis.fragility_score,
-        "risk_metrics": [m.dict() for m in analysis.risk_metrics] # Format for JSON/Django
+        "risk_metrics": [m.dict() for m in analysis.risk_metrics], # Format for JSON/Django
+        "sources": [s.dict() for s in analysis.sources] if analysis.sources else state.get("sources", [])
     }
 
 def synthesizer_node(state):

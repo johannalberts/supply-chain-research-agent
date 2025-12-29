@@ -35,6 +35,10 @@ class RiskMetricSchema(Schema):
     impact_score: int
     description: str
 
+class SourceSchema(Schema):
+    url: str
+    title: str
+
 class ReportSchema(Schema):
     id: int
     industry: str
@@ -42,6 +46,7 @@ class ReportSchema(Schema):
     executive_summary: str
     critical_alerts: List[str]
     risk_metrics: List[RiskMetricSchema]
+    sources: List[SourceSchema]
     created_at: str
     task_id: str = None
 
@@ -129,6 +134,7 @@ def get_task_report(request, task_id: str):
         executive_summary=report.executive_summary,
         critical_alerts=report.critical_alerts,
         risk_metrics=report.risk_metrics,
+        sources=report.sources,
         created_at=report.created_at.isoformat(),
         task_id=task_id
     )

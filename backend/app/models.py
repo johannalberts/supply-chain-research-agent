@@ -69,7 +69,8 @@ class SupplyChainReport(models.Model):
     
     # Store the list of strings (alerts) and list of dicts (metrics)
     critical_alerts = models.JSONField(default=list)
-    risk_metrics = models.JSONField(default=list) 
+    risk_metrics = models.JSONField(default=list)
+    sources = models.JSONField(default=list, help_text="Source articles with URL and title")
     
     created_at = models.DateTimeField(auto_now_add=True)
 

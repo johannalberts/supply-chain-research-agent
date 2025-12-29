@@ -206,6 +206,72 @@ export default function ReportDetail({ report }: ReportDetailProps) {
           </ul>
         </div>
       )}
+
+      {/* Sources - LCARS Style */}
+      {report.sources && report.sources.length > 0 && (
+        <div 
+          className="rounded-3xl p-6 shadow-xl"
+          style={{
+            background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
+            border: '3px solid var(--primary-emerald)',
+          }}
+        >
+          <div className="flex items-center gap-4 mb-6">
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: 'var(--primary-emerald)' }}
+            >
+              <svg className="w-8 h-8" fill="var(--text-dark)" viewBox="0 0 24 24">
+                <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold sci-heading" style={{ color: 'var(--primary-emerald)' }}>
+              SOURCE REFERENCES
+            </h3>
+          </div>
+          
+          <div className="space-y-3">
+            {report.sources.map((source, idx) => (
+              <a 
+                key={idx}
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-2xl corner-tr corner-bl transition-all hover:scale-[1.02]"
+                style={{
+                  background: 'rgba(15, 20, 25, 0.6)',
+                  border: '2px solid var(--border-emerald)',
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <span 
+                    className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mt-0.5"
+                    style={{
+                      background: 'var(--primary-emerald)',
+                      color: 'var(--text-dark)',
+                      fontFamily: 'Orbitron, monospace',
+                      fontWeight: 900,
+                    }}
+                  >
+                    {idx + 1}
+                  </span>
+                  <div className="flex-1">
+                    <p className="sci-text font-semibold mb-1" style={{ color: 'var(--primary-emerald)' }}>
+                      {source.title}
+                    </p>
+                    <p className="text-xs sci-text break-all" style={{ color: 'var(--text-secondary)' }}>
+                      {source.url}
+                    </p>
+                  </div>
+                  <svg className="w-5 h-5 flex-shrink-0 mt-1" fill="none" stroke="var(--primary-emerald)" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

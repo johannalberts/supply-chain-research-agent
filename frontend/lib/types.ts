@@ -6,6 +6,11 @@ export interface RiskMetric {
   description: string;
 }
 
+export interface Source {
+  url: string;
+  title: string;
+}
+
 export interface Report {
   id: number;
   industry: string;
@@ -13,6 +18,7 @@ export interface Report {
   executive_summary: string;
   critical_alerts: string[];
   risk_metrics: RiskMetric[];
+  sources: Source[];
   created_at: string;
   task_id?: string;
 }
