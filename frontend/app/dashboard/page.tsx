@@ -130,7 +130,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-3">
               {user && (
                 <div 
-                  className="px-4 py-2 rounded-full"
+                  className="px-4 py-3 rounded-full flex items-center"
                   style={{ background: 'var(--accent-coral)' }}
                 >
                   <span className="text-xs font-bold" style={{ color: 'var(--text-dark)' }}>

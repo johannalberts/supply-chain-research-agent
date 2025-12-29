@@ -35,7 +35,7 @@ export default function BackgroundPatternSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2 sci-button flex items-center gap-2"
+        className="px-4 py-3 sci-button flex items-center gap-2"
         style={{
           background: 'var(--primary-teal)',
           color: 'var(--text-dark)',
