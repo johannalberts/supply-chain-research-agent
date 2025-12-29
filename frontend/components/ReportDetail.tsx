@@ -131,7 +131,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
                 key={idx} 
                 className="p-4 rounded-2xl corner-tr corner-bl"
                 style={{
-                  background: 'rgba(15, 20, 25, 0.6)',
+                  background: 'var(--bg-card)',
                   border: '2px solid var(--border-coral)',
                 }}
               >
@@ -156,7 +156,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
         <div 
           className="rounded-3xl p-6 shadow-xl relative"
           style={{
-            background: 'linear-gradient(135deg, #1a0a0a 0%, #0a0000 100%)',
+            background: 'linear-gradient(135deg, var(--bg-alert) 0%, var(--bg-alert-end) 100%)',
             border: '4px solid var(--status-critical)',
             boxShadow: '0 0 30px rgba(239, 68, 68, 0.3)',
           }}
@@ -183,7 +183,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
                 key={idx} 
                 className="flex items-start rounded-2xl p-4 corner-tl corner-br"
                 style={{
-                  background: 'rgba(15, 20, 25, 0.8)',
+                  background: 'var(--bg-alert-item)',
                   border: '2px solid var(--status-critical)',
                 }}
               >
@@ -239,7 +239,7 @@ export default function ReportDetail({ report }: ReportDetailProps) {
                 rel="noopener noreferrer"
                 className="block p-4 rounded-2xl corner-tr corner-bl transition-all hover:scale-[1.02]"
                 style={{
-                  background: 'rgba(15, 20, 25, 0.6)',
+                  background: 'var(--bg-card)',
                   border: '2px solid var(--border-emerald)',
                 }}
               >

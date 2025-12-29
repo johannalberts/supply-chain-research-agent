@@ -79,7 +79,7 @@ export default function BackgroundPattern() {
       className="fixed inset-0 pointer-events-none"
       style={{
         zIndex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: 'var(--bg-dark)',
         ...patternStyle,
       }}
     />

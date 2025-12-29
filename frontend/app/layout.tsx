@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
 import { SettingsProvider } from "@/lib/settings-context";
+import { ThemeProvider } from "@/lib/theme-context";
 import BackgroundPattern from "@/components/BackgroundPattern";
 
 const geistSans = Geist({
@@ -30,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased sci-scrollbar`}
       >
-        <SettingsProvider>
-          <AuthProvider>
-            <BackgroundPattern />
-            {children}
-          </AuthProvider>
-        </SettingsProvider>
+        <ThemeProvider>
+          <SettingsProvider>
+            <AuthProvider>
+              <BackgroundPattern />
+              {children}
+            </AuthProvider>
+          </SettingsProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

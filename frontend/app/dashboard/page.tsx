@@ -9,6 +9,7 @@ import ReportsSidebar from '@/components/ReportsSidebar';
 import ReportDetail from '@/components/ReportDetail';
 import NewResearchModal from '@/components/NewResearchModal';
 import BackgroundPatternSelector from '@/components/BackgroundPatternSelector';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -137,6 +138,7 @@ export default function Dashboard() {
                   </span>
                 </div>
               )}
+              <ThemeToggle />
               <BackgroundPatternSelector />
               <button
                 onClick={handleNewResearch}
@@ -243,7 +245,7 @@ export default function Dashboard() {
                   NO REPORT SELECTED
                 </h3>
                 <p className="sci-text mb-8" style={{ color: 'var(--text-secondary)' }}>
-                  SELECT A COMPLETED RESEARCH TASK FROM THE MISSION LOGS TO VIEW DETAILED RISK ANALYSIS
+                  SELECT A COMPLETED RESEARCH TASK FROM THE REPORTS LIST TO VIEW DETAILED RISK ANALYSIS
                 </p>
                 <button
                   onClick={handleNewResearch}

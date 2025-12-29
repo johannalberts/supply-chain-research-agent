@@ -106,7 +106,7 @@ export default function ReportsSidebar({
             </div>
             
             <h2 className="text-2xl font-bold sci-heading mb-4" style={{ color: 'var(--text-primary)' }}>
-              MISSION LOGS
+              REPORTS FILTER
             </h2>
             
             {/* Filter - LCARS Style */}

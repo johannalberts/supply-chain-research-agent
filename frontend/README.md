@@ -43,7 +43,7 @@ Displays risk scores (0-10 scale) with animated segmented progress bars.
 ```
 
 ### ReportsSidebar
-Collapsible sidebar for mission logs and task filtering.
+Collapsible sidebar for reports list and task filtering.
 
 **Features:**
 - Edge-mounted toggle button with smooth slide animation

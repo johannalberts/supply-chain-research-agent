@@ -58,9 +58,9 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
         style={{ 
           width: size, 
           height: size * 0.8,
-          background: 'linear-gradient(135deg, #0f1419 0%, #0a0a0a 100%)',
+          background: 'linear-gradient(135deg, var(--bg-panel-gradient-start) 0%, var(--bg-panel-gradient-end) 100%)',
           border: `3px solid ${getColor()}`,
-          boxShadow: `inset 0 0 20px rgba(0,0,0,0.5), 0 0 20px ${getColor()}40`,
+          boxShadow: `inset 0 0 20px var(--overlay-dark), 0 0 20px ${getColor()}40`,
           position: 'relative',
           zIndex: 0,
           padding: '20px',
@@ -102,8 +102,8 @@ export default function NumericalGauge({ value, label, size = 180 }: NumericalGa
                 key={index}
                 style={{
                   flex: 1,
-                  background: isFilled ? segmentColor : '#1a1a1a',
-                  border: `1px solid ${isFilled ? segmentColor : '#333'}`,
+                  background: isFilled ? segmentColor : 'var(--segment-empty)',
+                  border: `1px solid ${isFilled ? segmentColor : 'var(--border-dark)'}`,
                   borderRadius: '4px',
                   opacity: isFilled ? 1 : 0.3,
                   animation: isFilled ? `pulse-segment ${pulseSpeed} ease-in-out infinite, light-up 0.3s ease-out` : 'none',
